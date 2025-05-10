@@ -9,7 +9,7 @@ The MarkoCloud Contest toolkit consists of several components:
 1. **CSV to DynamoDB Uploader**: AWS Lambda function to automatically upload CSV files from S3 to DynamoDB
 2. **CSV Splitter**: Utility to split large CSV files into smaller chunks for easier processing
 3. **Winner Picker**: AWS Lambda function to randomly select a winner from the DynamoDB table
-4. CSVsamples: Provide sample format of full file and 3 exampkles of split files
+4. CSVsamples: Provide sample format of full file and 3 examples of split files
 5. IAM Policy JSON: Provide sample policies to be used with the CSV2DynamoDB and pick-winner lambda functions
 
 ## Components
