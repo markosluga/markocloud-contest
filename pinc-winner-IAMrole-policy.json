@@ -1,0 +1,21 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "pickwinnerrole",
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:dynamodb:us-west-2:123456789000:table/markocloud-contest",
+                "arn:aws:logs:us-west-2:123456789000:*",
+                "arn:aws:logs:us-west-2:123456789000:log-group:/aws/lambda/markocloud-contest:*"
+            ]
+        }
+    ]
+}
