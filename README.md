@@ -1,6 +1,6 @@
 # MarkoCloud Contest
 
-A comprehensive solution for managing online contests using AWS services. This project provides tools to collect participant data, store it in DynamoDB, and randomly select winners.
+A simple solution for managing online contests using AWS services. This project provides tools to collect participant data, store it in DynamoDB, and randomly select winners.
 
 ## Overview
 
@@ -57,31 +57,35 @@ The repository includes sample CSV files:
 - AWS CLI configured with your credentials
 - Python 3.x with pandas library installed
 
+### CSV file prep
+1. Name the fist column uuid and fill it up with intigers from 1 to number of contestants. See samples provided for what the file needs to look like
+2. Add the contestants in the second column. The sample file calls it 'UserName' but the colum name doesn't matter
+3. Use the CSVsplitter.py to create your batch import files. The BatchWrite API call is limited to 25 items, this is why we split the main file
+
 ### DynamoDB Setup
-1. Create a DynamoDB table with appropriate primary key (e.g., 'uuid')
+1. Create a DynamoDB table with appropriate primary key of 'uuid'
 2. Note the table name for use in the Lambda functions
 
 ### Lambda Function Setup
-1. Create Lambda functions for CSV2DynamoDB and pick-winner
-2. Set the environment variable for the table name in CSV2DynamoDB
-3. Configure an S3 trigger for CSV2DynamoDB to process uploaded files
+1. Create Lambda functions from CSV2DynamoDB.py and pick-winner.py
+2. Set the environment variable key=table value=yourtablename for both the CSV2DynamoDB.py and pick-winner.py. YOu can also hardcode the table name into both, inspect the code comments to see how
 
-### Local Testing
-1. Use the CSVsplitter.py to create test files
-2. Upload test files to S3 to trigger the CSV2DynamoDB function
-3. Run the pick-winner function to select a random winner
+### S3 Setup 
+1. Create an S3 bucket
+2. Configure an S3 trigger and select the CSV2DynamoDB lambda functiuon as a notification target so that the lambda can process all uploaded .csv files. Leave the prefix empty (process all uploaded files) and set the suffix to .csv so that you don't send other file types to the lambda
+3. Upload test files to your S3 bucket. If the trigger has been set correctly, this should invoke the CSV2DynamoDB function and populate the DyanmoDB table. You can now check the table in the console and view the items to validate that it is populated
+4. Run a test with an empty event on the pick-winner function to select a random winner. The output will be in the test data and you should be able to see both the number of contestants and a randomly selected winner in the outputs.
 
 ## Best Practices
 
-- Ensure your CSV files have consistent headers matching your DynamoDB table attributes
-- For large contests, consider implementing pagination in the pick-winner function
-- Secure your AWS resources with appropriate IAM policies
-- Back up your contestant data regularly
+- For large contests, consider implementing pagination in the pick-winner function (not implemented)
+- Secure your AWS resources with IAM policies that have least privilege (see provided samples)
+- Ensure you comply with all laws and regulatrions that govern your contestant data
 
 ## License
 
-[Specify your license here]
+This software is offered without any guarantee or liability. While the author did not intend for this code to cause any issues, using this code is strictly your responsibility and should be done at your own risk.
 
 ## Author
 
-[Your Name/Organization]
+MarkoCloud
