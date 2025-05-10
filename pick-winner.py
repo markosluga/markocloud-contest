@@ -2,7 +2,8 @@ import boto3
 from uuid import uuid4
 
 dynamodb = boto3.resource('dynamodb')
-table = dynamodb.Table('markocloud-contest') #change the contest table name to your table
+ # Set your table name as an environment variable. You can also hardcode the table name by replacing os.environ['table'] with 'your-table-name' here if you like.
+tableName = dynamodb.Table(os.environ['table'])
 
 def lambda_handler(event, context):
     # This code sets a limit of 1000 records. Please adjust these to your desired size.

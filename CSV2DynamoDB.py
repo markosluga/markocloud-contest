@@ -8,7 +8,7 @@ import urllib.parse
 
 s3 = boto3.resource('s3')
 dynamodb = boto3.resource('dynamodb')
- # Set your table name as an environment variable. You can also hardcode the table name here if you like.
+ # Set your table name as an environment variable. You can also hardcode the table name by replacing os.environ['table'] with 'your-table-name' here if you like.
 tableName = os.environ['table']
 
 def lambda_handler(event, context):
