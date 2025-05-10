@@ -79,7 +79,7 @@ The repository includes sample CSV files:
 ## Best Practices
 
 - For large contests, consider implementing pagination in the pick-winner function (not implemented)
-- Secure your AWS resources with IAM policies that have least privilege (see provided samples)
+- Secure your AWS resources with IAM policies that have least privilege (see provided samples where you need to change 123456789000 to your account number and the us-west-2 to your region)
 - Ensure you comply with all laws and regulatrions that govern your contestant data
 
 ## License
