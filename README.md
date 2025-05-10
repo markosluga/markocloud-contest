@@ -42,8 +42,10 @@ AWS Lambda function that:
 - Randomly selects a winner using UUID-based randomization
 - Prints the winner's information
 
-#### Configuration:
-- Update the table name in the script to match your DynamoDB table
+#### Environment Variables:
+- `table`: The name of your DynamoDB table
+
+#### Configuration:e
 - Adjust the scan limit (default: 1000) based on your contest size
 
 ## Sample Data
@@ -51,6 +53,7 @@ AWS Lambda function that:
 The repository includes sample CSV files:
 - `CSVsample.csv`: Main sample file with contestant data
 - `CSVsample1.csv`, `CSVsample2.csv`, etc.: Split samples for testing
+- `IAM-role-policy.json` files with example least privilege permissions for each lambda
 
 ## Setup Instructions
 
