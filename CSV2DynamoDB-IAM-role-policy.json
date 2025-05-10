@@ -1,0 +1,23 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "CSV2DynamoDBrole",
+			"Effect": "Allow",
+			"Action": [
+				"s3:GetObject",
+				"dynamodb:BatchWriteItem",
+				"dynamodb:PutItem",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents",
+				"logs:CreateLogGroup"
+			],
+			"Resource": [
+				"arn:aws:s3:::markocloud-contest/*",
+				"arn:aws:dynamodb:us-west-2:123456789000:table/markocloud-contest",
+				"arn:aws:logs:us-west-2:123456789000:*",
+				"arn:aws:logs:us-west-2:123456789000:log-group:/aws/lambda/markocloud-contest:*"
+			]
+		}
+	]
+}
