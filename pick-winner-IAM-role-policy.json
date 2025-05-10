@@ -2,24 +2,20 @@
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "pickwinnerrole",
             "Effect": "Allow",
             "Action": [
-                "logs:CreateLogStream",
                 "dynamodb:GetItem",
                 "dynamodb:Scan",
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
                 "logs:PutLogEvents"
             ],
             "Resource": [
-                "arn:aws:logs:us-west-2:123456789000:log-group:/aws/lambda/markocloud-contest:*",
-                "arn:aws:dynamodb:us-west-2:123456789000:table/markocloud-contest"
+                "arn:aws:dynamodb:us-west-2:866117724370:table/markocloud-contest",
+                "arn:aws:logs:us-west-2:866117724370:*",
+                "arn:aws:logs:us-west-2:866117724370:log-group:/aws/lambda/markocloud-contest:*"
             ]
-        },
-        {
-            "Sid": "VisualEditor1",
-            "Effect": "Allow",
-            "Action": "logs:CreateLogGroup",
-            "Resource": "arn:aws:logs:us-west-2:123456789000:*"
         }
     ]
 }
