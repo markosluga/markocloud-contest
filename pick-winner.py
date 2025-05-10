@@ -9,7 +9,6 @@ def lambda_handler(event, context):
     for i in range(1):
         response = table.scan(
             Limit=1000,
-            ReturnConsumedCapacity='TOTAL'
         )
         # Define contestants as number of items in the response 
         contestants = len(response['Items'])
